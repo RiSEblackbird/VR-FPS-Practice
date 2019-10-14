@@ -11,12 +11,12 @@ public class VRhandShooting : MonoBehaviour
     public Vector3 MFScale;
     public Quaternion MFRotation;
     public float shotSpeed;
-    public int shotCount = 200;
+    public int shotCount = 500;
     private float shotInterval;
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
         {
             shotInterval += 1;
 
@@ -32,9 +32,7 @@ public class VRhandShooting : MonoBehaviour
                 MF.transform.localRotation = MFRotation;
 
                 GameObject bullet = (GameObject)Instantiate(bulletPrefab, Mazzleflash.transform.position, Mazzleflash.transform.rotation);
-                //bullet.transform.SetParent(gameObject.transform);
                 bullet.transform.localScale = BulletScale;
-                //bullet.transform.localRotation = MFRotation;
 
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
@@ -44,9 +42,9 @@ public class VRhandShooting : MonoBehaviour
             }
 
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
         {
-            shotCount = 200;
+            shotCount = 500;
         }
 
         Mazzleflash.SetActive(false);
