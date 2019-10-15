@@ -16,7 +16,7 @@ public class VRhandShooting : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             shotInterval += 1;
 
@@ -42,7 +42,7 @@ public class VRhandShooting : MonoBehaviour
             }
 
         }
-        else if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+        else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             shotCount = 500;
         }
