@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VRhandShooting : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject Mazzleflash;
     public GameObject MF;
+    public Text ShotCount;
     public Vector3 BulletScale;
     public Vector3 MFScale;
     public Quaternion MFRotation;
@@ -16,6 +18,8 @@ public class VRhandShooting : MonoBehaviour
 
     void Update()
     {
+        ShotCount.text = shotCount.ToString();
+
         if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             shotInterval += 1;
