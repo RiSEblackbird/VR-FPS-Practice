@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1547958785826752486}
   - component: {fileID: 1547958785826752485}
   - component: {fileID: 1547958785826752484}
-  - component: {fileID: 1425659341077786499}
   - component: {fileID: 4453099341256499996}
+  - component: {fileID: 5224619422835658370}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Shell
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1547958785826752490}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.708, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.5, z: 0.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8283361082149213677}
   m_Father: {fileID: 0}
@@ -81,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1425659341077786499
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547958785826752490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4453099341256499996
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,13 +90,26 @@ Rigidbody:
   m_GameObject: {fileID: 1547958785826752490}
   serializedVersion: 2
   m_Mass: 0.01
-  m_Drag: 2
-  m_AngularDrag: 10
+  m_Drag: 0.1
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5224619422835658370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547958785826752490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4938001002548193418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,12 +180,12 @@ PrefabInstance:
     - target: {fileID: 5946018556438137638, guid: 8bc940f79ae55104eb1830b63c07cdc5,
         type: 3}
       propertyPath: m_Range
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5946018556438137638, guid: 8bc940f79ae55104eb1830b63c07cdc5,
         type: 3}
       propertyPath: m_Intensity
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc940f79ae55104eb1830b63c07cdc5, type: 3}
