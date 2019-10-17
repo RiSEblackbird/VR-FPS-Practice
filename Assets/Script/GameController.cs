@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
         }
 
 
-        if (OVRInput.Get(OVRInput.Button.One))
+        if (OVRInput.Get(OVRInput.Button.Four))
         {
             // 現在のシーン番号を取得
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
