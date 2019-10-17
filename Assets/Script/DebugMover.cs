@@ -1,23 +1,35 @@
 using UnityEngine;
 
+// 本アプリ用に調整
+
 public class DebugMover : MonoBehaviour
 {
+    // private CharacterController Controller;
+    // private Vector3 MoveThrottle = Vector3.zero;
+
     [SerializeField]
     Transform Head = null;
-    const float Angle = 30f;
-    const float DashSpeed = 5f;
-    const float SlowSpeed = 0.2f;
+    public const float Angle = 2;
+    public const float DashSpeed = 80f;
+    public const float SlowSpeed = 40f;
+    // public const float JumpPower = 50f;
+
+    void Start()
+    {
+        // Controller = GetComponent<CharacterController>();
+        // MoveThrottle = Vector3.zero;
+    }
 
     void Reset()
     {
         Head = GetComponentInChildren<OVRCameraRig>().transform.Find("TrackingSpace/CenterEyeAnchor");
     }
-
+    
     float Scale
     {
         get
         {
-            return IsPressTrigger ? DashSpeed : IsPressGrip ? SlowSpeed : 1f;
+            return IsPressTrigger ? DashSpeed : IsPressGrip ? SlowSpeed : 40f;
         }
     }
 
@@ -25,45 +37,80 @@ public class DebugMover : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)
-            || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
+            return Input.GetKey(KeyCode.LeftShift);
+            // || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
         }
     }
     bool IsPressGrip
     {
         get
         {
-            return Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftAlt)
-            || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+            return Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftAlt);
+            //  || OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
         }
     }
 
     void Update()
     {
         // Forward move
-        if (Input.GetKey(KeyCode.W) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
+        if (Input.GetKey(KeyCode.W) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp))
         {
             var forward = Head.forward;
             forward.y = 0;
             transform.position += forward.normalized * Time.deltaTime * Scale;
         }
         // Back move
-        if (Input.GetKey(KeyCode.S) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickDown) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
+        if (Input.GetKey(KeyCode.S) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickDown))
         {
             var forward = Head.forward;
             forward.y = 0;
             transform.position -= forward.normalized * Time.deltaTime * Scale;
         }
-        // Left rotate
-        if (Input.GetKeyDown(KeyCode.A) || OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickLeft) || OVRInput.GetDown(OVRInput.Button.SecondaryThumbstickLeft))
+
+        // 追記：Left move
+        if (Input.GetKey(KeyCode.A) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft))
         {
-            transform.Rotate(0, -Angle, 0);
+            var right = Head.right;
+            right.y = 0;
+            transform.position -= right.normalized * Time.deltaTime * Scale;
+        }
+        // 追記：Right move
+        if (Input.GetKey(KeyCode.D) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight))
+        {
+            var right = Head.right;
+            right.y = 0;
+            transform.position += right.normalized * Time.deltaTime * Scale;
+        }
+
+        /* 追記：Jump simple 保留
+        if (Controller.isGrounded)
+        {
+            MoveThrottle = Vector3.zero;
+        }
+
+        if (Input.GetKey(KeyCode.B) || OVRInput.Get(OVRInput.Button.SecondaryThumbstick) || OVRInput.Get(OVRInput.Button.Two))
+        { 
+            MoveThrottle += new Vector3(0, JumpPower, 0);
+        }
+        else
+        {
+            MoveThrottle += new Vector3(0, -10f, 0);
+        }
+        */
+        
+
+        // Left rotate
+        if (Input.GetKey(KeyCode.Q) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+        {
+            transform.Rotate(new Vector3(0, -Angle, 0));
         }
         // Right rotate
-        if (Input.GetKeyDown(KeyCode.D) || OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickRight) || OVRInput.GetDown(OVRInput.Button.SecondaryThumbstickRight))
+        if (Input.GetKey(KeyCode.E) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
         {
-            transform.Rotate(0, Angle, 0);
+            transform.Rotate(new Vector3(0, Angle, 0));
         }
+
+        /*
         // Up move
         if (Input.GetKeyDown(KeyCode.K) || OVRInput.GetDown(OVRInput.Button.Four) || OVRInput.GetDown(OVRInput.Button.Two))
         {
@@ -74,5 +121,6 @@ public class DebugMover : MonoBehaviour
         {
             transform.position -= Vector3.up * Scale;
         }
+        */
     }
 }
