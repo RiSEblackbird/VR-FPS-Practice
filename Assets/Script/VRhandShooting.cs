@@ -20,7 +20,7 @@ public class VRhandShooting : MonoBehaviour
     {
         ShotCount.text = shotCount.ToString();
 
-        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger) || Input.GetKey(KeyCode.Mouse0))
         {
             shotInterval += 1;
 
@@ -46,7 +46,7 @@ public class VRhandShooting : MonoBehaviour
             }
 
         }
-        else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
+        else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger) || Input.GetKey(KeyCode.R))
         {
             shotCount = 500;
         }
