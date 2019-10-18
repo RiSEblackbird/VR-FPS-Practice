@@ -15,7 +15,7 @@ public class ChaseTarget : MonoBehaviour
     
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 1.0f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 0.2f);
 
         transform.position += transform.forward * speed;
     }

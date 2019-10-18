@@ -89,10 +89,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547958785826752490}
   serializedVersion: 2
-  m_Mass: 0.01
-  m_Drag: 0.1
-  m_AngularDrag: 0.1
-  m_UseGravity: 1
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -108,7 +108,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 100, z: 20}
+  m_Size: {x: 100, y: 100, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4938001002548193418
 PrefabInstance:

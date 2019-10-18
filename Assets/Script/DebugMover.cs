@@ -10,8 +10,8 @@ public class DebugMover : MonoBehaviour
     [SerializeField]
     Transform Head = null;
     public const float Angle = 2;
-    public const float DashSpeed = 80f;
-    public const float SlowSpeed = 40f;
+    public const float DashSpeed = 60f;
+    public const float SlowSpeed = 30f;
     // public const float JumpPower = 50f;
 
     void Start()
@@ -29,7 +29,7 @@ public class DebugMover : MonoBehaviour
     {
         get
         {
-            return IsPressTrigger ? DashSpeed : IsPressGrip ? SlowSpeed : 40f;
+            return IsPressTrigger ? DashSpeed : IsPressGrip ? SlowSpeed : 30f;
         }
     }
 
